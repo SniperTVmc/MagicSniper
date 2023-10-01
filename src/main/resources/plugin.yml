@@ -1,0 +1,18 @@
+main: fr.snipertvmc.magicsniper.Main
+
+
+name: MagicSniper
+version: 1.0.0
+api-version: 1.19
+description: Ce plugin permet de créer et utiliser des sorts personnalisés.
+
+
+author: Sniper_TVmc
+#website: https://snipertvmc.fr
+
+
+commands:
+
+  magicsniper:
+    description: "Utilisez cette commande afin de gérer les sorts du plugin."
+    aliases: [ms, magics, msniper]

@@ -1,0 +1,44 @@
+#
+# Ce plugin a été développé par Sniper_TVmc
+#
+# 2023
+#
+
+
+MESSAGES:
+
+  MAIN:
+    PREFIX: "&5&lMagicSniper &8&l» "
+    NO_PERMISSION: "&cVous n'avez pas la permission d'utiliser cette commande."
+
+
+  ADMIN:
+    RELOADING_COMMAND: "&7Rechargement du plugin..."
+    RELOAD_WITHOUT_ERROR: "&7Le plugin a été rechargé &asans erreur&7."
+    RELOAD_WITH_ERROR: "&7Le plugin a été rechargé &cavec des erreurs&7. Vérifiez la console."
+
+
+  ERRORS:
+    NO_ARGUMENTS: "&cErreur, vous n'avez mis aucun argument."
+    NO_SPELL: "&cErreur, vous n'avez mis aucun sort."
+    NO_PLAYER: "&cErreur, vous n'avez mis aucun joueur."
+    PLAYER_OFFLINE: "&cErreur, ce joueur n'est pas en ligne."
+    WRONG_ARGUMENT: "&cErreur, cet argument n'existe pas."
+    CONSOLE_EXECUTE: "&cErreur, seul les joueurs peuvent utiliser cette commande."
+
+    CHECK_CONSOLE: "&cErreur, une erreur est survenue. Veuillez regarder la console."
+
+    COOLDOWN_WAIT: "&cErreur, vous devez attendre la fin du temps de rechargement."
+    ENABLED_SPELL: "&cErreur, veuillez activer votre sort avant de faire une action."
+    SPELL_DONT_EXISTS: "&cErreur, ce sort n'existe pas."
+    NOT_SPELL_OWNER: "&cErreur, ce sort ne vous appartient pas."
+
+
+  SPELLS:
+    # Placeholders: %spellName%
+    SPELL_ENABLED: "&7Vous avez &aactivé &7le sort &2%spellName%&7."
+    SPELL_DISABLED: "&7Vous avez &cdésactivé &7le sort &4%spellName%&7."
+    ULTIME_EFFECT_USED: "&7Vous avez &eutilisé &7l'ultime &6%spellName%&7."
+
+    BYPASS_COOLDOWNS_ENABLED: "&7Vous avez &aactivé &7le contournement des cooldowns."
+    BYPASS_COOLDOWNS_DISABLED: "&7Vous avez &cdésactivé &7le contournement des cooldowns."

@@ -1,0 +1,18 @@
+#
+# Ce plugin a été développé par Sniper_TVmc
+#
+# 2023
+#
+
+
+PERMISSIONS:
+
+  COMMANDS:
+    MAIN: magicsniper.commands.main
+    GIVE: magicsniper.commands.give
+    BYPASS: magicsniper.commands.bypass
+
+  firstSpell:
+    LEVEL_1: magicsniper.spells.firstSpell.level.1
+    LEVEL_2: magicsniper.spells.firstSpell.level.2
+    LEVEL_3: magicsniper.spells.firstSpell.level.3

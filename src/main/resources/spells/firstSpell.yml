@@ -1,0 +1,83 @@
+#
+# Ce plugin a été développé par Sniper_TVmc
+#
+# 2023
+#
+
+
+SPELL_INFORMATION:
+
+  ENABLED_SPELL: true
+  LEVELS: 3
+  MATERIAL_ITEM: "RED_DYE"
+  ITEM_DISPLAY_NAME: "Sort de Feu"
+
+  # Placeholders: %ownerName%, %spellName%
+  ITEM_LORE:
+    - ""
+    - "&eNom du Sort:"
+    - "§8&l» &f%spellName%"
+    - ""
+    - "&ePropriétaire du Sort:"
+    - "§8&l» &f%ownerName%"
+    - ""
+
+  GLOBAL_EFFECT:
+    ENABLED: true
+    MIN_LEVEL: 2
+    EFFECT_ID: "FIRE_RESISTANCE"
+    AMPLIFIER: 0
+    SHOW_PARTICLES: false
+
+  ULTIME_EFFECT:
+
+    LEVEL_1:
+      ENABLED: true
+
+      # Temps de Rechargement en Secondes
+      COOLDOWN: 30
+
+      # Placeholders: %playerName%
+      COMMANDS:
+
+        # Commandes à exécuter pour Attaquer
+        ATTACK:
+          - "effect give %playerName% minecraft:fire_resistance 30 1 true"
+
+        # Commandes à exécuter pour se Défendre
+        DEFENSE:
+          - "effect give %playerName% minecraft:regeneration 5 1 true"
+
+    LEVEL_2:
+      ENABLED: true
+
+      # Temps de Rechargement en Secondes
+      COOLDOWN: 30
+
+      # Placeholders: %playerName%
+      COMMANDS:
+
+        # Commandes à exécuter pour Attaquer
+        ATTACK:
+          - "execute at %playerName% run summon minecraft:fireball ~ ~2 ~ {ExplosionPower:1}"
+
+        # Commandes à exécuter pour se Défendre
+        DEFENSE:
+          - "effect give %playerName% minecraft:regeneration 10 1 true"
+
+    LEVEL_3:
+      ENABLED: true
+
+      # Temps de Rechargement en Secondes
+      COOLDOWN: 30
+
+      # Placeholders: %playerName%
+      COMMANDS:
+
+        # Commandes à exécuter pour Attaquer
+        ATTACK:
+          - "execute at %playerName% run summon minecraft:fireball ~ ~2 ~ {ExplosionPower:1}"
+
+        # Commandes à exécuter pour se Défendre
+        DEFENSE:
+          - "effect give %playerName% minecraft:regeneration 5 2 true"
