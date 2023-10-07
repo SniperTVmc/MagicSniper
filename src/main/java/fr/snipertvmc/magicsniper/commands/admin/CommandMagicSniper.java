@@ -1,6 +1,7 @@
 package fr.snipertvmc.magicsniper.commands.admin;
 
 import fr.snipertvmc.magicsniper.Main;
+import fr.snipertvmc.magicsniper.managers.ConfigurationFilesManager;
 import fr.snipertvmc.magicsniper.managers.ItemManager;
 import fr.snipertvmc.magicsniper.managers.PlayerDataManager;
 import fr.snipertvmc.magicsniper.managers.SpellManager;
@@ -8,17 +9,21 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CommandMagicSniper implements CommandExecutor {
+public class CommandMagicSniper implements CommandExecutor, TabCompleter {
 
     private final ItemManager itemManager = new ItemManager();
     private final SpellManager spellManager = new SpellManager();
     private final PlayerDataManager playerDataManager = new PlayerDataManager();
+    private final ConfigurationFilesManager configFilesManager = new ConfigurationFilesManager();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -99,6 +104,8 @@ public class CommandMagicSniper implements CommandExecutor {
                         String itemName = spellFile.getString("SPELL_INFORMATION.ITEM_DISPLAY_NAME")
                                 .replace("&", "§");
 
+                        String spellDisplayName = spellFile.getString("SPELL_INFORMATION.SPELL_DISPLAY_NAME");
+
                         List<String> loreList = spellFile.getStringList("SPELL_INFORMATION.ITEM_LORE");
                         for (int i = 0; i < loreList.size(); i++) {
                             String line = loreList.get(i);
@@ -106,7 +113,7 @@ public class CommandMagicSniper implements CommandExecutor {
                             loreList.set(i, line
                                     .replaceAll("&", "§")
                                     .replaceAll("%ownerName%", player.getName())
-                                    .replaceAll("%spellName%", secondArg));
+                                    .replaceAll("%spellName%", spellDisplayName));
                         }
 
                         ItemStack spellItem = itemManager.getSpellItem(player.getName(), secondArg, materialName, itemName, loreList);
@@ -183,5 +190,40 @@ public class CommandMagicSniper implements CommandExecutor {
                         .replace("&", "§");
         player.sendMessage(messagesPrefix + messageNoPermission);
 
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
+        List<String> options = new ArrayList<>();
+
+        if (args.length == 1) {
+            options.add("give");
+            options.add("bypass");
+
+        } else if (args.length == 2) {
+            String firstArg = args[0];
+
+            if (firstArg.equalsIgnoreCase("give")) {
+
+                String folderPath = "spells/";
+                File folder = new File(Main.getInstance().getDataFolder(), folderPath);
+                File[] files = folder.listFiles();
+
+                if (files == null) {
+                    return null;
+                }
+
+                for (File file : files) {
+                    if (file.isFile()) {
+                        String spellName = file.getName().replace(".yml", "");
+                        YamlConfiguration spellFile = configFilesManager.getSpellFile(spellName);
+                        if (spellFile.getBoolean("SPELL_INFORMATION.ENABLED_SPELL")) {
+                            options.add(spellName);
+                        }
+                    }
+                }
+            }
+        }
+        return options;
     }
 }
