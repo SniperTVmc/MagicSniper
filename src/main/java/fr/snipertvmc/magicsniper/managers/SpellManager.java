@@ -90,10 +90,12 @@ public class SpellManager {
 
         int playerSpellLevel = getPlayerSpellLevel(player, spellName);
 
+        String spellDisplayName = spellFile.getString("SPELL_INFORMATION.SPELL_DISPLAY_NAME");
+
         String spellEnabled =
                 Main.getInstance().getFilesManager().getMessagesFile().getString("MESSAGES.SPELLS.SPELL_ENABLED")
                         .replace("&", "§")
-                        .replace("%spellName%", spellName);
+                        .replace("%spellName%", spellDisplayName);
         player.sendMessage(messagesPrefix + spellEnabled);
 
         List<String> playerEnabledSpells = playerDataFile.getStringList("PLAYER_DATA.ENABLED_SPELLS");
@@ -169,11 +171,12 @@ public class SpellManager {
         player.getInventory().setItem(player.getInventory().getHeldItemSlot(), holdingItem);
         /// -----------\\\
 
+        String spellDisplayName = spellFile.getString("SPELL_INFORMATION.SPELL_DISPLAY_NAME");
 
         String spellDisabled =
             Main.getInstance().getFilesManager().getMessagesFile().getString("MESSAGES.SPELLS.SPELL_DISABLED")
                     .replace("&", "§")
-                    .replace("%spellName%", spellName);
+                    .replace("%spellName%", spellDisplayName);
         player.sendMessage(messagesPrefix + spellDisabled);
 
     }
