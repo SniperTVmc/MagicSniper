@@ -8,6 +8,7 @@ import fr.snipertvmc.magicsniper.managers.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -28,15 +29,24 @@ public class Main extends JavaPlugin {
         Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §fMade by §dSniper_TVmc");
         Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8]");
 
-        //if (!Bukkit.getServer().getPluginManager().isPluginEnabled("LuckPerms")) {
-        //    Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §cCe plugin a besoin de §fLuckPerms §cafin de fonctionner correctement.");
-        //    Bukkit.getPluginManager().disablePlugin(this);
-        //    return;
-        //}
+        Plugin NBTApi = Bukkit.getServer().getPluginManager().getPlugin("NBTAPI");
+
+        if (NBTApi == null) {
+            Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §cCe plugin a besoin de §fNBTAPI §cafin de fonctionner correctement.");
+            Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §8§l» §7Lien de téléchargement: §fhttps://spigotmc.org/resources/7939/");
+            Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8]");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+
+        } else {
+            Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §aPlugin trouvé: §fNBTAPI v" + NBTApi.getDescription().getVersion());
+            Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8]");
+        }
 
         configurationFilesManager.reloadConfigurationFiles();
 
         Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8] §dLe plugin §5MagicSniper §dest désormais activé.");
+        Bukkit.getServer().getConsoleSender().sendMessage("§8[§5MagicSniper§8]");
 
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerLogin(), this);
