@@ -4,6 +4,11 @@
 
 Create your own spells, improve them and make your Minecraft world more magical than ever.
 
+[![Download](https://img.shields.io/github/downloads/Shykuzo/Punishment/total?style=for-the-badge)](https://github.com/SniperTVmc/MagicSniper/releases/)
+[![License](https://img.shields.io/badge/License-GNU%20General%20Public%20License%20v3.0-blue?style=for-the-badge)](https://github.com/SniperTVmc/MagicSniper/blob/Main/LICENSE)
+[![CodeFactor](https://www.codefactor.io/repository/github/shykuzo/punishment/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/snipertvmc/magicsniper)
+
+<!--
 ## Preview / Screenshots
 
 ### __Exemple1__
@@ -21,6 +26,7 @@ Create your own spells, improve them and make your Minecraft world more magical 
   <img src=https://media.tenor.com/qMZe3e1Er7EAAAAC/example.gif>
   <br>
 </details>
+-->
 
 ## How to install MagicSniper ?
 
@@ -45,9 +51,9 @@ Finally, __restart__ the server and __check__ that the plugin has _loaded correc
 ## API Usage/Examples
 
 ```java
- 
+
 // API WILL BE AVAILABLE IN A FUTURE UPDATE
- 
+
 ```
 
 ## Servers using MagicSniper
